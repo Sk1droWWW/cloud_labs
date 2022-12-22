@@ -6,4 +6,4 @@ app = Flask(__name__)
 def index():
     return 'Web App with Python Flask by Mykhailo'
 
-app.run(host='213.174.29.225', port=32)
+app.run(host='0.0.0.0', port=80)
