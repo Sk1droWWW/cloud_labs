@@ -36,10 +36,6 @@ class Car(db.Model):
         return "Car {}".format(self.name)
 
 
-# run
-app.run(host='0.0.0.0', port=80)
-
-
 def getStubCarObj():
     return Car(
         name = "Audi A5",
@@ -50,11 +46,14 @@ def getStubCarObj():
 
 with app.app_context():
     db.create_all()
-    
     db.session.add(getStubCarObj())
     db.session.commit()
 
-@app.route('/cars/page')
+@app.route('/cars_page')
 def index():
     cars = Car.query.all()
     return render_template('index.html', cars=cars)
+
+
+# run
+app.run(host='0.0.0.0', port=80)
