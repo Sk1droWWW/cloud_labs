@@ -19,9 +19,9 @@ db.init_app(app)
 
 
 # endpoints
-# @app.route('/')
-# def index():
-#     return 'Web App with Python Flask by Mykhailo'
+@app.route('/')
+def index():
+    return 'Web App with Python Flask by Mykhailo'
 
 
 # db models
@@ -49,10 +49,10 @@ with app.app_context():
     db.session.add(getStubCarObj())
     db.session.commit()
 
-@app.route('/cars_page')
+@app.route("/cars", methods=["GET"])
 def index():
     cars = db.session.execute(db.select(Car).order_by(Car.name)).scalars()
-    return render_template('car/list.html', cars=cars)
+    return cars
 
 
 # run
