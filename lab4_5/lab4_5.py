@@ -57,7 +57,7 @@ def create_car():
 
 
 @app.route('/cars/<id>/', methods=['DELETE'])
-def delete_user(id):
+def delete_car(id):
     session = loadSession()
     car = session.query(Car).filter_by(id=id).first()
     session.delete(car)
@@ -69,7 +69,7 @@ def delete_user(id):
 
 
 @app.route('/cars/<id>/', methods=['PUT'])
-def update_user(id):
+def update_сar(id):
     session = loadSession()
     data = request.get_json()
     
