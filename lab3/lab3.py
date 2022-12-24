@@ -34,7 +34,7 @@ class Car(db.Model):
     petrol_consumtion = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        return f'<Car {self.name}>'
+        return "Car {}".format(self.name)
 
 
 
