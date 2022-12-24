@@ -63,7 +63,9 @@ def new():
     session = loadSession()
 
     if request.method == 'POST':
-        car = Car(request.form['name'], request.form['tank_capacity'],
+        car = Car(
+            request.form['id'],
+            request.form['name'], request.form['tank_capacity'],
             request.form['petrol_quantity'], request.form['petrol_consumtion_per_100_km'])
         
         session.add(car)
