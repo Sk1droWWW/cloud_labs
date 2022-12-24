@@ -19,9 +19,9 @@ db.init_app(app)
 
 
 # endpoints
-@app.route('/')
-def index():
-    return 'Web App with Python Flask by Mykhailo'
+# @app.route('/')
+# def index():
+#     return 'Web App with Python Flask by Mykhailo'
 
 
 # db models
