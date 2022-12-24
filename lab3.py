@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 # create the extension
@@ -24,19 +24,37 @@ def index():
     return 'Web App with Python Flask by Mykhailo'
 
 
-
 # db models
 class Car(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     tank_capacity = db.Column(db.Integer, nullable=False)
     petrol_quantity = db.Column(db.Integer, nullable=False)
-    petrol_consumtion = db.Column(db.Integer, nullable=False)
+    petrol_consumtion_per_100_km = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return "Car {}".format(self.name)
 
 
-
 # run
 app.run(host='0.0.0.0', port=80)
+
+
+def getStubCarObj():
+    return Car(
+        name = "Audi A5",
+        tank_capacity = 60,
+        petrol_quantity = 40,
+        petrol_consumtion_per_100_km = 7,
+    )
+
+with app.app_context():
+    db.create_all()
+    
+    db.session.add(getStubCarObj())
+    db.session.commit()
+
+@app.route('/cars/page')
+def index():
+    cars = Car.query.all()
+    return render_template('index.html', cars=cars)
