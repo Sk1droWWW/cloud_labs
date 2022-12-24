@@ -51,7 +51,7 @@ with app.app_context():
 
 @app.route('/cars_page')
 def index():
-    cars = Car.query.all()
+    cars = db.session.execute(db.select(Car).order_by(Car.name)).scalars()
     return render_template('index.html', cars=cars)
 
 
