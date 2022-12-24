@@ -46,8 +46,6 @@ def getStubCarObj():
 
 with app.app_context():
     db.create_all()
-    db.session.add(getStubCarObj())
-    db.session.commit()
 
 @app.route('/cars_page')
 def cars_page():
