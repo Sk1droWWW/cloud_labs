@@ -29,6 +29,7 @@ class Car(db.Model):
 @app.route('/cars', methods = ['GET', 'POST'])
 def new():
     with app.app_context():
+        db.create_all()
         if request.method == 'POST':
             car = Car(request.form['name'], request.form['tank_capacity'],
                 request.form['petrol_quantity'], request.form['petrol_consumtion_per_100_km'])
