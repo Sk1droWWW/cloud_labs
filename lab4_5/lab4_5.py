@@ -30,13 +30,22 @@ def loadSession():
     session = Session()
     return session
 
+
 #endpoints
 @app.route('/cars/', methods = ['GET'])
-def get_cars_jsonify():
+def get_cars():
     session = loadSession()
     cars = session.query(Car).all()
    
     return jsonify([getCarJson(car) for car in cars])
+
+
+@app.route('/cars/<id>/', methods=['GET'])
+def get_car_by_id(id):
+    session = loadSession()
+    car = session.query(Car).filter_by(id=id).first()
+   
+    return jsonify([getCarJson(car)])
 
 
 @app.route('/cars/', methods = ['POST'])
@@ -97,6 +106,7 @@ def getCarJson(car):
             'petrol_quantity': car.petrol_quantity,
 			'petrol_consumtion_per_100_km': car.petrol_consumtion_per_100_km
         } 
+
 
 #main
 if __name__ == '__main__':
