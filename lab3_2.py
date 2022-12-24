@@ -57,6 +57,7 @@ def loadSession():
     session = Session()
     return session
 
+
 @app.route('/cars', methods = ['GET', 'POST'])
 def new():
     session = loadSession()
