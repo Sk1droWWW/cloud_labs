@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#
+.rgr/db_example.json
+.rgr/rgr_database.json
