@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 
 #
-.rgr/db_example.json
-.rgr/rgr_database.json
+rgr/db_example.json
+*.db
